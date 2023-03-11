@@ -102,7 +102,7 @@ const data = [{
         "isActive": false,
         "age": 20,
         "eyeColor": "blue",
-        "name": "Andrea Hull",
+        "name": "Andrea Wull",
         "gender": "female",
         "favoriteFruit": "banana"
     }
@@ -111,12 +111,14 @@ const data = [{
 
 
 // 1) print person yang suka buah apple dan warna mata nya biru
+console.log("No. 1 -----------")
 for (let i = 0; i < data.length; i++) {
     if (data[i].favoriteFruit === 'apple' && data[i].eyeColor === 'blue') {
         console.log(data[i])
     }
 }
 // 2) print berapa person yang age nya diatas 30
+console.log("No. 2 -----------")
 result = 0
 for (let i = 0; i < data.length; i++) {
     if (data[i].age > 30) {
@@ -127,52 +129,65 @@ console.log(result)
 
 
 // 3) print person yang isActive true and gender nya female
+console.log("No. 3 -----------")
 for (let i = 0; i < data.length; i++) {
     if (data[i].isActive && data[i].gender === 'female') {
         console.log(data[i])
     }
 }
 // 4) print yang age nya diatas 30 atau dibawah 25 dan eyeColor nya blue
+console.log("No. 4 -----------")
 for (let i = 0; i < data.length; i++) {
     if ((data[i].age > 30 || data[i].age < 25) && data[i].eyeColor === 'blue') {
         console.log(data[i])
     }
 }
 // 5) print person yang mengandung huruf W di name nya
+console.log("No. 5 -----------")
 for (let i = 0; i < data.length; i++) {
-    for (let y = 0; i < data[i].name.length; i++) {
-        if (data[i].name[y] === 'W') {
+    names = data[i].name.length;
+    for (let y = 0; y < names; y++) {
+        if (data[i].name[y] === "W") {
             console.log(data[i])
         }
     }
+
 }
 
 // 6) print person isActive false dan gender nya male dan age nya diatas 25
+console.log("No. 6 -----------")
 for (let i = 0; i < data.length; i++) {
     if (!data[i].isActive && data[i].gender === 'male' && data[i].age > 25) {
         console.log(data[i])
     }
 }
+
 // 7) print person age nya dibawah 30 atau eyeColor brown dan favoritFruit nya banana
+console.log("No. 7 -----------")
 for (let i = 0; i < data.length; i++) {
     if ((data[i].age < 30 || data[i].eyeColor === 'brown') && data[i].favoriteFruit === 'banana') {
         console.log(data[i])
     }
 }
+
 // 8) print person gender male
+console.log("No. 8 -----------")
 for (let i = 0; i < data.length; i++) {
     if (data[i].gender === 'male') {
         console.log(data[i])
     }
 }
+
 // 9) print person eyeColor Blue
+console.log("No. 9 -----------")
 for (let i = 0; i < data.length; i++) {
     if (data[i].eyeColor === 'blue') {
         console.log(data[i])
     }
 }
-// 10) print person age diatas 30
 
+// 10) print person age diatas 30
+console.log("No. 10 ----------")
 for (let i = 0; i < data.length; i++) {
     if (data[i].age > 30) {
         console.log(data[i])
