@@ -145,13 +145,11 @@ for (let i = 0; i < data.length; i++) {
 // 5) print person yang mengandung huruf W di name nya
 console.log("No. 5 -----------")
 for (let i = 0; i < data.length; i++) {
-    names = data[i].name.length;
-    for (let y = 0; y < names; y++) {
-        if (data[i].name[y] === "W") {
+    for (let j = 0; j < data[i].name.length; j++) {
+        if (data[i].name[j].toUpperCase() === "W") {
             console.log(data[i])
         }
     }
-
 }
 
 // 6) print person isActive false dan gender nya male dan age nya diatas 25
