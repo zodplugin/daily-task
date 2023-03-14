@@ -342,7 +342,8 @@ const data = [{
     }
 ]
 
-
+// aasdasdasd
+//  aa
 // 1) display / print person yang registered dibawah tahun 2022
 console.log('--------- 1.')
 console.log(data.find(e => {
@@ -364,6 +365,7 @@ for (let i = 0; i < data.length; i++) {
         }
     }
 }
+
 console.log(
         // data.map(e => {
         //     return e.friends.map(ex => {
@@ -375,9 +377,42 @@ console.log(
 
     )
     // 4) display hobby dari friends id 2
+console.log('--------- 4.')
+console.log(
+        data.map((x) => {
+            return x.friends.filter(y => {
+                return y.id === 2
+            })
+        }))
     // 5) display friends yang gender nya male dan mempunya hobby basketball
-    // 6) display friends yang isActive nya true dan gender nya female dan favorite fruit nya strawberry
-    // 7) display siapa saja yang mempunya teman name Theresia
-    // 8) display hobby id 1 dari friends yang isActive nya true
-    // 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball
-    // 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023
+console.log('--------- 5.')
+
+for (let i = 0; i < data.length; i++) {
+    for (let j = 0; j < data[i].friends.length; j++) {
+        for (let k = 0; k < data[i].friends[j].hobby.length; k++) {
+            if (data[i].friends[j].hobby[k].hobby === 'basketball' && data[i].friends[j].gender === 'male') {
+                console.log(data[i].friends[j])
+            }
+        }
+    }
+}
+
+// console.log(
+//     data.map(x => {
+//         return x.friends.map(y => {
+//             return y.hobby.map(z => {
+//                 return z.forEach(a => {
+//                     return a
+//                 })
+//             })
+//         })
+//     })
+// )
+
+// 6) display friends yang isActive nya true dan gender nya female dan favorite fruit nya strawberry
+// 7) display siapa saja yang mempunya teman name Theresia
+// 8) display hobby id 1 dari friends yang isActive nya true
+// 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball
+// 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023
+// 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball
+// 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023
