@@ -326,7 +326,7 @@ const data = [{
                 "id": 2,
                 "name": "Theresia",
                 "isActive": true,
-                "favoriteFruit": "banana",
+                "favoriteFruit": "strawberry",
                 "gender": "female",
                 "hobby": [{
                         "id": 1,
@@ -342,8 +342,6 @@ const data = [{
     }
 ]
 
-// aasdasdasd
-//  aa
 // 1) display / print person yang registered dibawah tahun 2022
 console.log('--------- 1.')
 console.log(data.find(e => {
@@ -356,63 +354,123 @@ console.log(data.find(e => {
     }))
     // 3) display friends yang hobby nya football
 console.log('--------- 3.')
-for (let i = 0; i < data.length; i++) {
-    for (let j = 0; j < data[i].friends.length; j++) {
-        for (let k = 0; k < data[i].friends[j].hobby.length; k++) {
-            if (data[i].friends[j].hobby[k].hobby === 'football') {
-                console.log(data[i].friends[j])
-            }
-        }
-    }
-}
+console.log(data.map(x => {
+    return x.friends.filter(y => {
+        return y.hobby.filter(z => z.hobby === 'football')
+    })
+}))
 
-console.log(
-        // data.map(e => {
-        //     return e.friends.map(ex => {
-        //         return ex
-        //     })
+// Cara menggunakan for loop
+// for (let i = 0; i < data.length; i++) {
+//     for (let j = 0; j < data[i].friends.length; j++) {
+//         for (let k = 0; k < data[i].friends[j].hobby.length; k++) {
+//             if (data[i].friends[j].hobby[k].hobby === 'football') {
+//                 console.log(data[i].friends[j])
+//             }
+//         }
+//     }
+// }
 
-        // })
-
-
-    )
-    // 4) display hobby dari friends id 2
+// 4) display hobby dari friends id 2
 console.log('--------- 4.')
-console.log(
-        data.map((x) => {
-            return x.friends.filter(y => {
-                return y.id === 2
-            })
-        }))
-    // 5) display friends yang gender nya male dan mempunya hobby basketball
-console.log('--------- 5.')
+console.log(data.map((x) => {
+    return x.friends.filter(y => {
+        return y.id === 2
+    })
+}))
 
+// 5) display friends yang gender nya male dan mempunya hobby basketball
+console.log('--------- 5.')
+let temp = []
 for (let i = 0; i < data.length; i++) {
-    for (let j = 0; j < data[i].friends.length; j++) {
-        for (let k = 0; k < data[i].friends[j].hobby.length; k++) {
-            if (data[i].friends[j].hobby[k].hobby === 'basketball' && data[i].friends[j].gender === 'male') {
-                console.log(data[i].friends[j])
-            }
-        }
-    }
+    temp.push(data[i].friends.filter(x => {
+        return x.gender === 'male' && x.hobby.some(z => z.hobby === 'basketball')
+    }))
 }
 
-// console.log(
-//     data.map(x => {
-//         return x.friends.map(y => {
-//             return y.hobby.map(z => {
-//                 return z.forEach(a => {
-//                     return a
-//                 })
-//             })
-//         })
-//     })
-// )
+console.log(temp)
+
+// cara alternatif menggunakan for loop
+// for (let i = 0; i < data.length; i++) {
+//     for (let j = 0; j < data[i].friends.length; j++) {
+//         for (let k = 0; k < data[i].friends[j].hobby.length; k++) {
+//             if (data[i].friends[j].hobby[k].hobby === 'basketball' && data[i].friends[j].gender === 'male') {
+//                 console.log(data[i].friends[j])
+//             }
+//         }
+//     }
+// }
+
+
 
 // 6) display friends yang isActive nya true dan gender nya female dan favorite fruit nya strawberry
+console.log('---------- 6.')
+console.log(data.map(x => {
+    return x.friends.filter(y => {
+        return y.isActive === true && y.favoriteFruit === 'strawberry' && y.gender === 'female'
+    })
+}))
+
 // 7) display siapa saja yang mempunya teman name Theresia
+console.log('--------- 7.')
+let arr = []
+
+// Cara pertama 1 dengan method
+let dataFriendTheresia = (data.map((x) => {
+    return x.friends.filter((y) => {
+        if (y.name === 'Theresia') {
+            arr.push(x)
+        }
+    })
+}))
+
+arr = arr.filter((value, index, self) =>
+    index === self.findIndex((t) => (
+        t._id === value._id && t.name === value.name
+    ))
+)
+
+// Cara ke 2 menggunakan for loop
+// for (let i = 0; i < data.length; i++) {
+//     for (let j = 0; j < data[i].friends.length; j++) {
+//         if (data[i].friends[j].name === 'Theresia') {
+//             arr.push(data[i])
+//         }
+//     }
+// }
+
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arr.length - i - 1; j++) {
+//         if (arr[j].name === arr[j + 1].name) {
+//             arr.splice(j, 1)
+//         }
+//     }
+// }
+
+
+console.log(arr)
+
 // 8) display hobby id 1 dari friends yang isActive nya true
+console.log('--------- 8.')
+console.log(data.map(x => {
+    return x.friends.filter(y => {
+        return y.isActive === true && y.hobby.filter(z => z.id === 1)
+    })
+}))
+
 // 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball
+console.log('--------- 9.')
+console.log(data.filter(x => {
+    return x.eyeColor === 'brown' && x.friends.filter(y => {
+        return y.favoriteFruit === 'banana' && y.hobby.some(z => z.hobby === 'basketball')
+    })
+}))
+
+
 // 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023
-// 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball
-// 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023
+console.log('--------- 10.')
+console.log(data.filter(x => {
+    return parseInt(x.registered.substring(0, 4)) === 2023 && x.friends.filter(y => {
+        y.gender === 'male' || y.favoriteFruit === 'banana'
+    })
+}))
