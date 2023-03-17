@@ -354,11 +354,17 @@ console.log(data.find(e => {
     }))
     // 3) display friends yang hobby nya football
 console.log('--------- 3.')
-console.log(data.map(x => {
-    return x.friends.filter(y => {
-        return y.hobby.filter(z => z.hobby === 'football')
+
+function friendsFootball(data) {
+    data.map(x => {
+        return x.friends.filter(y => {
+            return y.hobby.filter(z => z.hobby === 'football')
+        })
     })
-}))
+
+    return data
+}
+console.log(friendsFootball(data))
 
 // Cara menggunakan for loop
 // for (let i = 0; i < data.length; i++) {
@@ -373,22 +379,32 @@ console.log(data.map(x => {
 
 // 4) display hobby dari friends id 2
 console.log('--------- 4.')
-console.log(data.map((x) => {
-    return x.friends.filter(y => {
-        return y.id === 2
+
+function friendsId2(data) {
+    data.map((x) => {
+        return x.friends.filter(y => {
+            return y.id === 2
+        })
     })
-}))
+
+    return data
+}
+console.log(friendsId2(data))
 
 // 5) display friends yang gender nya male dan mempunya hobby basketball
 console.log('--------- 5.')
-let temp = []
-for (let i = 0; i < data.length; i++) {
-    temp.push(data[i].friends.filter(x => {
-        return x.gender === 'male' && x.hobby.some(z => z.hobby === 'basketball')
-    }))
+
+function friendsMaleBasketball(data) {
+    let temp = []
+    for (let i = 0; i < data.length; i++) {
+        temp.push(data[i].friends.filter(x => {
+            return x.gender === 'male' && x.hobby.some(z => z.hobby === 'basketball')
+        }))
+    }
+    return temp
 }
 
-console.log(temp)
+console.log(friendsMaleBasketball(data))
 
 // cara alternatif menggunakan for loop
 // for (let i = 0; i < data.length; i++) {
